@@ -1,0 +1,240 @@
+/* 1. Declaramos Archivo Black */
+@font-face {
+  font-family: "Archivo Black";
+  src:
+    url("./fonts/ArchivoBlack-Regular.woff2") format("woff2"),
+    url("./fonts/ArchivoBlack-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. Declaramos Open Sans Regular */
+@font-face {
+  font-family: "Open Sans";
+  src:
+    url("./fonts/OpenSans-Regular.woff2") format("woff2"),
+    url("./fonts/OpenSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 3. Declaramos Open Sans Bold */
+@font-face {
+  font-family: "Open Sans";
+  src:
+    url("./fonts/OpenSans-Bold.woff2") format("woff2"),
+    url("./fonts/OpenSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- 1. Reseteo Global (Tip de limpieza) --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Crucial para que el padding no sume al ancho */
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. Estilos Base del Bloque Principal --- */
+.page {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #000;
+  min-width: 320px; /* Tu punto de ruptura mínimo */
+}
+
+/* --- 3. COMPONENTE REUTILIZABLE: SECTION-CONTAINER --- */
+/* Aquí está la magia de las 5 rayas tintas y el padding lateral */
+.section-container {
+  padding: 60px 20px; /* Base para móvil */
+  background-image: linear-gradient(
+    to right,
+    #4a0e0e 0% 20%,
+    #5e1212 20% 40%,
+    #4a0e0e 40% 60%,
+    #5e1212 60% 80%,
+    #4a0e0e 80% 100%
+  );
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 3. Bloque Header (BEM) --- */
+.header {
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* AHORA LAS USAMOS EN TU CÓDIGO */
+h1,
+h2,
+h3 {
+  font-family: "Archivo Black", sans-serif;
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+.section-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centra ambos divs en móvil */
+  justify-content: flex-start;
+}
+
+.profile_group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.profile__name {
+  font-size: 72px;
+  font-family: "Archivo Black", sans-serif;
+  margin-bottom: 20px;
+}
+.profile__description {
+  font-size: 18px;
+  font-family: "Open Sans", Arial, sans-serif;
+  margin-bottom: 20px;
+  color: #ffffff;
+  opacity: 50%;
+}
+
+.profile__experience {
+  width: 793px;
+  height: 150px;
+  text-align: justify;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.profile__temas {
+  margin-top: 0px;
+  display: flex;
+  justify-content: left;
+  gap: 25px;
+  padding-top: 0px;
+}
+.profile__subtemas {
+  color: #ffffff;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 18px;
+  list-style-type: none;
+}
+
+.profile__photo {
+  display: flex;
+  justify-content: left;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.profile__photo img {
+  width: 100%;
+  max-width: 340px; /* Tamaño máximo de tu foto */
+  border-radius: 20px; /* Bordes redondeados */
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para que resalte del tinto */
+}
+
+.tools_list {
+  display: flex; /* Los pone uno al lado del otro */
+  list-style-type: none; /* Quita los puntos */
+  padding: 0; /* Quita el espacio extra a la izquierda */
+
+  gap: 40px; /* Espacio entre cada icono */
+  align-items: center;
+}
+
+.icon-svg {
+  width: 24px; /* Ajusta al tamaño que necesites, como el 24px de tus capturas */
+  height: auto;
+  display: block;
+}
+
+/* --- 6. FOOTER (Centrado total como pediste) --- */
+.footer {
+  align-items: center; /* Centra horizontalmente todo el bloque */
+  text-align: center;
+  gap: 15px; /* Espaciado entre elementos */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-footer {
+  font-size: 40px;
+  font-family: "Archivo Black", sans-serif;
+  margin-bottom: 20px;
+}
+
+.footer__mail {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #6d6dff;
+  text-decoration: underline;
+}
+
+.footer__social {
+  display: flex;
+  justify-content: center;
+  gap: 128px;
+  margin-top: 10px;
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+
+  transition: transform 0.3s ease;
+}
+
+.icon-svg:hover {
+  transform: scale(1.2);
+  filter: reinvert(1);
+}
+
+.icon_git {
+  fill: #e2490c; /* O el código de color cian que estés usando */
+}
+
+.icon_footer {
+  width: 24px;
+  height: 24px;
+  filter: invert(1); /* Si los iconos son negros, esto los hace blancos */
+  transition: transform 0.3s ease;
+}
+
+/* --- 4. Media Queries al final del componente --- */
+@media screen and (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    padding: 40px 100px;
+  }
+}
