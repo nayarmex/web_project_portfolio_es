@@ -50,26 +50,47 @@ html {
 /* --- 2. Estilos Base del Bloque Principal --- */
 .page {
   font-family: "Inter", Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #000;
-  min-width: 320px; /* Tu punto de ruptura mínimo */
+  background: radial-gradient(circle at center, #1a0a0a 0%, #000000 100%);
+  color: #ffffff;
+  max-width: 1267px; /* Tu punto de ruptura mínimo */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.page_container {
+  max-width: 1267px; /* El ancho exacto de tu diseño */
+  margin: 0 auto; /* Centra todo el bloque */
 }
 
 /* --- 3. COMPONENTE REUTILIZABLE: SECTION-CONTAINER --- */
 /* Aquí está la magia de las 5 rayas tintas y el padding lateral */
 .section-container {
-  padding: 60px 20px; /* Base para móvil */
-  background-image: linear-gradient(
-    to right,
-    #4a0e0e 0% 20%,
-    #5e1212 20% 40%,
-    #4a0e0e 40% 60%,
-    #5e1212 60% 80%,
-    #4a0e0e 80% 100%
-  );
-  color: #ffffff;
+  /* 1. Fondo base muy oscuro (casi negro) */
+  background-color: #000000; /* Fondo negro total para contraste máximo */
+
+  padding: 60px 2px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.background {
+  /* Creamos el patrón de rejilla de 12 columnas */
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(74, 14, 14, 0.65) 0px,
+    /* Inicio del color tinto */ rgba(74, 14, 14, 0.65) 50px,
+    /* Línea muy delgada de 1px */ transparent 1px,
+    /* Espacio negro transparente */ transparent 70px
+      /* Salto exacto para que quepan 12 en 1267px */
+  );
+
+  background-attachment: local;
+  border-left: 1px solid #4a0e0e; /* Cierra la rejilla a la izquierda */
+  border-right: 1px solid #4a0e0e; /* Cierra la rejilla a la derecha */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* --- 3. Bloque Header (BEM) --- */
@@ -96,22 +117,21 @@ h3 {
 body {
   font-family: "Open Sans", Arial, sans-serif;
 }
-.section-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center; /* Centra ambos divs en móvil */
-  justify-content: flex-start;
-}
 
 .profile_group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 .profile__name {
-  font-size: 72px;
   font-family: "Archivo Black", sans-serif;
-  margin-bottom: 20px;
+  font-size: clamp(40px, 5vw, 72px); /* Tamaño fluido: se encoge en móvil */
+  line-height: 1.1;
+  margin-bottom: 30px;
+  position: relative;
+  color: #ffffff;
+  z-index: 2;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Para que las líneas rojas no "corten" las letras */
 }
 .profile__description {
   font-size: 18px;
@@ -119,14 +139,17 @@ body {
   margin-bottom: 20px;
   color: #ffffff;
   opacity: 50%;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .profile__experience {
-  width: 793px;
+  max-width: 793px;
   height: 150px;
   text-align: justify;
   margin-bottom: 0px;
   padding-bottom: 0px;
+  color: #ffffff;
 }
 .profile__temas {
   margin-top: 0px;
@@ -146,14 +169,17 @@ body {
   display: flex;
   justify-content: left;
   padding-left: 20px;
-  width: 100%;
+  width: 340px;
+  flex-shrink: 0;
 }
 
 .profile__photo img {
   width: 100%;
+  height: auto;
   max-width: 340px; /* Tamaño máximo de tu foto */
-  border-radius: 20px; /* Bordes redondeados */
+  border-radius: 24px; /* Bordes redondeados */
   object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para que resalte del tinto */
 }
 
@@ -164,6 +190,11 @@ body {
 
   gap: 40px; /* Espacio entre cada icono */
   align-items: center;
+}
+
+.section-container_title {
+  color: #ffffff;
+  margin-bottom: 15px;
 }
 
 .icon-svg {
@@ -215,7 +246,10 @@ body {
 }
 
 .icon_git {
-  fill: #e2490c; /* O el código de color cian que estés usando */
+  fill: #f0eeed; /* O el código de color cian que estés usando */
+}
+.icon_gitcat {
+  fill: #1417d4; /* O el código de color cian que estés usando */
 }
 
 .icon_footer {
@@ -226,6 +260,13 @@ body {
 }
 
 /* --- 4. Media Queries al final del componente --- */
+@media screen and (min-width: 320px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .header {
     flex-direction: row;
