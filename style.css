@@ -58,7 +58,6 @@ html {
   padding-left: 20px;
   padding-right: 20px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 .page_container {
   max-width: 1267px; /* El ancho exacto de tu diseño */
@@ -238,10 +237,6 @@ body {
   display: block;
   transition: transform 0.3s ease;
 }
-.tools_list {
-  width: 50px; /* Ajusta al tamaño que necesites, como el 24px de tus capturas */
-  height: 50px;
-}
 
 /* --- 6. FOOTER (Centrado total como pediste) --- */
 .footer {
@@ -306,21 +301,72 @@ body {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  align-items: flex-start; /* Evita que una card se estire verticalmente más que la otra */
+  align-items: stretch; /* Evita que una card se estire verticalmente más que la otra */
   width: 100%;
 }
 
 .cards {
-  flex: 1;
+  flex: 1 1 0px;
   min-width: 0; /* Truco de flexbox para que el texto no "empuje" el ancho */
   text-align: justify;
   display: flex;
   flex-direction: column;
 }
+.card_description {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px); /* Efecto cristal */
+  padding: 20px;
+  flex: 1; /* Esto hace que si una descripción es corta, se estire para medir lo mismo que la de al lado */
+  display: flex;
+  flex-direction: column;
+}
+.card_icon_description {
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
+}
+.icon_arrow {
+  width: 24px;
+  height: 24px;
+  filter: invert(1);
+}
 
-.cards h3,
-.cards p {
-  width: 100%; /* Asegura que el texto use todo el ancho del contenedor de la card */
+.card_links {
+  display: flex;
+  gap: 25px; /* Espacio entre 'Demo' y 'GitHub' */
+  margin-top: auto; /* Los empuja al fondo de la tarjeta */
+  padding-top: 15px;
+  padding-bottom: 0;
+}
+.card_link {
+  display: flex;
+  align-items: center; /* Alinea icono y texto verticalmente */
+  gap: 8px; /* Espacio entre el icono y su texto */
+  color: #492de2; /* El color morado de la referencia */
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+.card_link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+.link_icon {
+  width: 25px; /* Tamaño pequeño para que no compita con el texto */
+  height: 25px;
+  /* Si el icono de GitHub es negro, puedes hacerlo blanco/morado con filter */
+  filter: brightness(0) saturate(100%) invert(48%) sepia(69%) saturate(2745%)
+    hue-rotate(225deg) brightness(101%) contrast(101%);
+}
+
+.icon_github_description {
+  filter: 24px;
+  height: 24px;
+  filter: invert(1);
+}
+.github_letters {
+  color: #ffffff;
 }
 
 /* --- INTENTANDO POSICION DENTRO --- */
@@ -329,6 +375,7 @@ body {
 .card_x {
   position: relative; /* Define el marco de referencia para los iconos */
   width: 100%; /* Se ajusta exactamente al ancho de la imagen */
+  flex: 0 0 auto;
 }
 
 /* 2. La imagen del proyecto */
@@ -337,18 +384,17 @@ body {
   max-width: 100%; /* Tus medidas de Figma */
   height: auto;
   object-fit: cover; /* Evita que la imagen se estire feo */
+  aspect-ratio: 590 / 330; /* Mantiene la proporción de tu Figma */
 }
 
 /* 3. La lista que contiene los iconos de HTML y CSS */
 .project_list {
   position: absolute; /* Flota sobre la imagen */
-  bottom: 0px; /* 15px desde el borde inferior de la imagen */
-  left: 0px; /* 15px desde el borde izquierdo de la imagen */
+  bottom: 5px; /* 15px desde el borde inferior de la imagen */
+  left: 5px; /* 15px desde el borde izquierdo de la imagen */
   display: flex; /* Los pone en fila (izquierda a derecha) */
-  gap: 0px; /* Espacio entre los iconos */
+  gap: 8px; /* Espacio entre los iconos */
   list-style: none;
-  padding: 0;
-  margin: 0;
   z-index: 10; /* Asegura que estén al frente */
 }
 
@@ -356,9 +402,7 @@ body {
 .card_icon {
   width: 45px;
   height: 45px;
-  filter: drop-shadow(
-    0 2px 4px rgba(136, 117, 117, 0.5)
-  ); /* Sombra para resaltar */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
 }
 
 /* --- 4. Media Queries al final del componente --- */
@@ -377,7 +421,7 @@ body {
     width: 100%; /* Ocupa todo el ancho disponible del celular */
     height: 200px; /* Altura reducida para que no tape toda la pantalla */
     object-fit: cover;
-    aspect-ratio: 1 / 1; /* Proporción más alargada para móviles */
+    aspect-ratio: 1/ 1; /* Proporción más alargada para móviles */
   }
   .order_cards {
     flex-direction: column; /* Una arriba de la otra en móvil */
