@@ -70,20 +70,17 @@ html {
 .section-container {
   /* 1. Fondo base muy oscuro (casi negro) */
   background-color: #000000; /* Fondo negro total para contraste máximo */
-
-  padding: 60px 2px;
+  padding: 30px 2px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-.background {
   /* Creamos el patrón de rejilla de 12 columnas */
   background-image: repeating-linear-gradient(
     to right,
-    rgba(74, 14, 14, 0.65) 0px,
-    /* Inicio del color tinto */ rgba(74, 14, 14, 0.65) 50px,
+    rgba(74, 14, 14, 0.55) 0px,
+    /* Inicio del color tinto */ rgba(74, 14, 14, 0.55) 50px,
     /* Línea muy delgada de 1px */ transparent 1px,
-    /* Espacio negro transparente */ transparent 70px
+    /* Espacio negro transparente */ transparent 65px
       /* Salto exacto para que quepan 12 en 1267px */
   );
 
@@ -91,20 +88,6 @@ html {
   border-left: 1px solid #4a0e0e; /* Cierra la rejilla a la izquierda */
   border-right: 1px solid #4a0e0e; /* Cierra la rejilla a la derecha */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* --- 3. Bloque Header (BEM) --- */
-.header {
-  background: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header__title {
-  font-size: 24px;
-  margin-bottom: 10px;
 }
 
 /* AHORA LAS USAMOS EN TU CÓDIGO */
@@ -145,11 +128,12 @@ body {
 
 .profile__experience {
   max-width: 793px;
-  height: 150px;
+  min-height: 100px;
   text-align: justify;
   margin-bottom: 0px;
   padding-bottom: 0px;
   color: #ffffff;
+  font-size: 18px;
 }
 .profile__temas {
   margin-top: 0px;
@@ -157,12 +141,56 @@ body {
   justify-content: left;
   gap: 25px;
   padding-top: 0px;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
 }
+.profile__temas :hover {
+  text-decoration: underline;
+  background-color: linear-gradient(90deg, #4e02e6, #7d67ff);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 12px; /* Un poco más de espacio para que el borde no choque con las letras */
+  display: inline-block;
+}
+
 .profile__subtemas {
-  color: #ffffff;
-  font-family: "Open Sans", Arial, sans-serif;
-  font-size: 18px;
-  list-style-type: none;
+  text-decoration: none; /* Quita el subrayado azul por defecto */
+  color: white; /* Color del texto */
+  font-weight: 500;
+  position: relative; /* Base para la línea */
+  padding-bottom: 8px; /* Espacio para la línea */
+}
+.profile__subtemas a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 12px; /* Un poco más de espacio para que el borde no choque con las letras */
+  display: inline-block;
+}
+.profile__subtemas a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px; /* Grosor de la línea */
+  background: linear-gradient(90deg, #271153, #7d67ff);
+
+  /* Transición suave para el borde */
+  transition: all 0.2s ease-in-out;
+  /* Borde invisible por defecto para que no "salte" al aparecer */
+  outline: 2px solid transparent;
+  outline-offset: 2px; /* Espacio entre la línea y su nuevo borde */
+}
+
+/* El efecto al pasar el cursor (Hover) */
+.profile__subtemas a:hover::after {
+  /* Aquí definimos el borde que rodeará la línea */
+  outline: 1px solid #7d67ff;
+  /* Opcional: puedes añadir un brillo para que resalte más */
+  box-shadow: 0 0 8px rgba(125, 103, 255, 0.6);
 }
 
 .profile__photo {
@@ -172,12 +200,18 @@ body {
   width: 340px;
   flex-shrink: 0;
 }
+.profile__photo :hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+  outline: 2px solid #7d67ff;
+  outline-offset: 2px; /* Espacio entre la línea y su nuevo borde */
+}
 
 .profile__photo img {
   width: 100%;
   height: auto;
   max-width: 340px; /* Tamaño máximo de tu foto */
-  border-radius: 24px; /* Bordes redondeados */
+  border-radius: 2px; /* Bordes redondeados */
   object-fit: cover;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para que resalte del tinto */
@@ -194,13 +228,19 @@ body {
 
 .section-container_title {
   color: #ffffff;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  font-size: 40px;
 }
 
 .icon-svg {
-  width: 24px; /* Ajusta al tamaño que necesites, como el 24px de tus capturas */
-  height: auto;
+  width: 50px; /* Ajusta al tamaño que necesites, como el 24px de tus capturas */
+  height: 50px;
   display: block;
+  transition: transform 0.3s ease;
+}
+.tools_list {
+  width: 50px; /* Ajusta al tamaño que necesites, como el 24px de tus capturas */
+  height: 50px;
 }
 
 /* --- 6. FOOTER (Centrado total como pediste) --- */
@@ -230,14 +270,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 128px;
-  margin-top: 10px;
-}
-
-.icon-svg {
-  width: 24px;
-  height: 24px;
-
-  transition: transform 0.3s ease;
+  margin-top: 05px;
 }
 
 .icon-svg:hover {
@@ -246,10 +279,14 @@ body {
 }
 
 .icon_git {
-  fill: #f0eeed; /* O el código de color cian que estés usando */
+  fill: #161615; /* O el código de color cian que estés usando */
 }
 .icon_gitcat {
   fill: #1417d4; /* O el código de color cian que estés usando */
+  filter: invert(100%);
+}
+.icon_js {
+  filter: invert(100%);
 }
 
 .icon_footer {
@@ -259,11 +296,91 @@ body {
   transition: transform 0.3s ease;
 }
 
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order_cards {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: flex-start; /* Evita que una card se estire verticalmente más que la otra */
+  width: 100%;
+}
+
+.cards {
+  flex: 1;
+  min-width: 0; /* Truco de flexbox para que el texto no "empuje" el ancho */
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards h3,
+.cards p {
+  width: 100%; /* Asegura que el texto use todo el ancho del contenedor de la card */
+}
+
+/* --- INTENTANDO POSICION DENTRO --- */
+
+/* 1. El contenedor padre de la imagen y los iconos */
+.card_x {
+  position: relative; /* Define el marco de referencia para los iconos */
+  width: 100%; /* Se ajusta exactamente al ancho de la imagen */
+}
+
+/* 2. La imagen del proyecto */
+.card_image {
+  display: block; /* Quita espacios extra debajo de la imagen */
+  max-width: 100%; /* Tus medidas de Figma */
+  height: auto;
+  object-fit: cover; /* Evita que la imagen se estire feo */
+}
+
+/* 3. La lista que contiene los iconos de HTML y CSS */
+.project_list {
+  position: absolute; /* Flota sobre la imagen */
+  bottom: 0px; /* 15px desde el borde inferior de la imagen */
+  left: 0px; /* 15px desde el borde izquierdo de la imagen */
+  display: flex; /* Los pone en fila (izquierda a derecha) */
+  gap: 0px; /* Espacio entre los iconos */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10; /* Asegura que estén al frente */
+}
+
+/* 4. Tamaño de los iconos (50x50 como en Figma o más pequeños si prefieres) */
+.card_icon {
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(
+    0 2px 4px rgba(136, 117, 117, 0.5)
+  ); /* Sombra para resaltar */
+}
+
 /* --- 4. Media Queries al final del componente --- */
 @media screen and (min-width: 320px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
+  }
+  .profile__experience {
+    min-height: auto; /* Que el alto lo defina solo el texto */
+    margin-bottom: 10px; /* Ajustas el espacio inferior para celular */
+    font-size: 16px; /* Opcional: bajar un poco el tamaño de letra */
+  }
+  .card_image {
+    display: block;
+    width: 100%; /* Ocupa todo el ancho disponible del celular */
+    height: 200px; /* Altura reducida para que no tape toda la pantalla */
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* Proporción más alargada para móviles */
+  }
+  .order_cards {
+    flex-direction: column; /* Una arriba de la otra en móvil */
   }
 }
 
@@ -272,10 +389,28 @@ body {
     flex-direction: row;
     justify-content: space-between;
   }
+  .profile__experience {
+    min-height: auto; /* Que el alto lo defina solo el texto */
+    margin-bottom: 10px; /* Ajustas el espacio inferior para celular */
+    font-size: 16px; /* Opcional: bajar un poco el tamaño de letra */
+  }
+  .card_image {
+    width: 100%; /* Sigue siendo flexible si el diseño es de varias columnas */
+    height: 300px; /* Un poco más de presencia */
+    aspect-ratio: 3/ 2;
+  }
+  .order_cards {
+    flex-direction: row; /* Una al lado de la otra en tablet/pc */
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .header {
     padding: 40px 100px;
+  }
+  .card_image {
+    width: 100%; /* Aquí aplicamos tu medida exacta de Figma */
+    height: auto;
+    margin: 0 auto; /* Opcional: Centrar si el contenedor es muy ancho */
   }
 }
