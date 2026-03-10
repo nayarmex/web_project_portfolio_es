@@ -382,8 +382,9 @@ body {
 .card_image {
   display: block; /* Quita espacios extra debajo de la imagen */
   max-width: 100%; /* Tus medidas de Figma */
-  height: auto;
+  height: 350px;
   object-fit: cover; /* Evita que la imagen se estire feo */
+  object-position: center; /* Asegura que el centro de la imagen sea lo visible */
   aspect-ratio: 590 / 330; /* Mantiene la proporción de tu Figma */
 }
 
@@ -406,7 +407,50 @@ body {
 }
 
 /* --- 4. Media Queries al final del componente --- */
-@media screen and (min-width: 320px) {
+
+@media screen and (max-width: 1023px) {
+  .header {
+    padding: 40px 100px;
+  }
+  .card_image {
+    width: 100%; /* Aquí aplicamos tu medida exacta de Figma */
+    height: auto;
+    margin: 0 auto; /* Opcional: Centrar si el contenedor es muy ancho */
+  }
+  .page {
+    padding-left: 10px; /* Reducimos márgenes laterales */
+    padding-right: 10px;
+  }
+
+  .profile__photo {
+    width: 250px; /* Foto más pequeña para tablets */
+  }
+
+  .order_cards {
+    gap: 10px; /* Menos espacio entre tarjetas */
+  }
+}
+@media screen and (max-width: 767px) {
+  .header {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .profile__experience {
+    min-height: auto; /* Que el alto lo defina solo el texto */
+    margin-bottom: 10px; /* Ajustas el espacio inferior para celular */
+    font-size: 16px; /* Opcional: bajar un poco el tamaño de letra */
+  }
+  .card_image {
+    width: 100%; /* Sigue siendo flexible si el diseño es de varias columnas */
+    height: 300px; /* Un poco más de presencia */
+    aspect-ratio: 3/ 2;
+  }
+  .order_cards {
+    flex-direction: column; /* Una al lado de la otra en tablet/pc */
+  }
+}
+
+@media screen and (max-width: 320px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
@@ -425,36 +469,5 @@ body {
   }
   .order_cards {
     flex-direction: column; /* Una arriba de la otra en móvil */
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .profile__experience {
-    min-height: auto; /* Que el alto lo defina solo el texto */
-    margin-bottom: 10px; /* Ajustas el espacio inferior para celular */
-    font-size: 16px; /* Opcional: bajar un poco el tamaño de letra */
-  }
-  .card_image {
-    width: 100%; /* Sigue siendo flexible si el diseño es de varias columnas */
-    height: 300px; /* Un poco más de presencia */
-    aspect-ratio: 3/ 2;
-  }
-  .order_cards {
-    flex-direction: row; /* Una al lado de la otra en tablet/pc */
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .header {
-    padding: 40px 100px;
-  }
-  .card_image {
-    width: 100%; /* Aquí aplicamos tu medida exacta de Figma */
-    height: auto;
-    margin: 0 auto; /* Opcional: Centrar si el contenedor es muy ancho */
   }
 }
