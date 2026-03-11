@@ -435,10 +435,24 @@ body {
     flex-direction: column;
     justify-content: space-between;
   }
+  .profile__photo {
+    height: 450px; /* Foto más pequeña para tablets */
+  }
   .profile__experience {
     min-height: auto; /* Que el alto lo defina solo el texto */
     margin-bottom: 10px; /* Ajustas el espacio inferior para celular */
-    font-size: 16px; /* Opcional: bajar un poco el tamaño de letra */
+    font-size: 14px; /* Opcional: bajar un poco el tamaño de letra */
+  }
+  .profile__temas {
+    flex-direction: column;
+  }
+  .tools_list {
+    display: flex;
+    flex-wrap: wrap; /* ¡Esta es la magia! Permite que los iconos bajen si no caben */
+    justify-content: left; /* Centra los iconos si queda uno solo abajo */
+    gap: 30px; /* Controla el espacio entre filas y columnas */
+    padding: 0;
+    list-style: none;
   }
   .card_image {
     width: 100%; /* Sigue siendo flexible si el diseño es de varias columnas */
@@ -455,10 +469,69 @@ body {
     flex-direction: row;
     justify-content: space-between;
   }
+
+  .section-container.profile {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra la foto y el texto */
+  }
+  .profile {
+    flex-direction: column;
+  }
+  .profile__photo {
+    width: 100%;
+    height: auto;
+    max-width: 200px; /* Tamaño máximo de tu foto */
+    border-radius: 1px; /* Bordes redondeados */
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra para que resalte del tinto */
+    order: -1; /* ¡Aquí está el truco! Envía la foto al principio del flex-container */
+    margin-bottom: 5px; /* Espacio entre la foto y tu nombre */
+    padding-left: 0; /* Quitamos el padding lateral para centrarla bien */
+  }
+  .profile_group {
+    order: 1; /* El texto se queda debajo */
+    /* Opcional: centra el texto para que combine con la foto */
+  }
+  .profile__name {
+    margin: 5px;
+  }
+  .profile__description {
+    margin: 5px;
+  }
   .profile__experience {
     min-height: auto; /* Que el alto lo defina solo el texto */
     margin-bottom: 10px; /* Ajustas el espacio inferior para celular */
-    font-size: 16px; /* Opcional: bajar un poco el tamaño de letra */
+    font-size: 12px; /* Opcional: bajar un poco el tamaño de letra */
+  }
+  .profile__temas {
+    flex-direction: column;
+    gap: 1px;
+    margin: 0;
+  }
+
+  .section-container_title {
+    font-size: x-large;
+    min-width: auto;
+  }
+
+  .tools {
+    padding: 0px;
+  }
+  .tools_list {
+    display: flex;
+    flex-wrap: wrap; /* ¡Esta es la magia! Permite que los iconos bajen si no caben */
+    justify-content: left; /* Centra los iconos si queda uno solo abajo */
+    gap: 30px; /* Controla el espacio entre filas y columnas */
+    padding: 0;
+    list-style: none;
+  }
+  .icon-svg {
+    width: 25px; /* Ajusta al tamaño que necesites, como el 24px de tus capturas */
+    height: 25px;
+
+    transition: transform 0.3s ease;
   }
   .card_image {
     display: block;
