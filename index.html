@@ -30,15 +30,25 @@
 
             <ul class="profile__temas">
               <li class="profile__subtemas">
-                <a href="tu-cv.pdf" download>Descargar CV</a>
+                <a href="tu-cv.pdf" class="profile_enlace" download
+                  >Descargar CV</a
+                >
+                <span class="linea"></span>
               </li>
               <li class="profile__subtemas">
-                <a href="https://github.com/tu-usuario" target="_blank"
+                <a
+                  href="https://github.com/tu-usuario"
+                  target="_blank"
+                  class="profile_enlace"
                   >Enlace a GitHub</a
                 >
+                <span class="linea"></span>
               </li>
               <li class="profile__subtemas">
-                <a href="mailto:tu-correo@ejemplo.com">Hablemos</a>
+                <a href="mailto:tu-correo@ejemplo.com" class="profile_enlace"
+                  >Hablemos</a
+                >
+                <span class="linea"></span>
               </li>
             </ul>
           </div>
@@ -119,14 +129,14 @@
                     <img
                       src="./icons/html5-brands-solid-full_orange.svg"
                       alt="icon html"
-                      class="card_icon icon_html"
+                      class="card_icon card_icon_html"
                     />
                   </li>
                   <li>
                     <img
                       src="./icons/css3-alt-brands-solid-full_blue.svg"
                       alt="icono css"
-                      class="card_icon icon_css"
+                      class="card_icon card_icon_css"
                     />
                   </li>
                 </ul>
@@ -180,14 +190,14 @@
                     <img
                       src="./icons/openai-brands-solid-full.svg"
                       alt="icon html"
-                      class="card_icon icon_html"
+                      class="card_icon card_icon_open"
                     />
                   </li>
                   <li>
                     <img
                       src="./icons/square-github-brands-solid-full.svg"
                       alt="icono css"
-                      class="card_icon icon_css"
+                      class="card_icon card_icon_git"
                     />
                   </li>
                 </ul>
@@ -225,7 +235,10 @@
           </div>
         </section>
 
-        <footer id="contacto" class="section-container footer background">
+        <footer
+          id="contacto"
+          class="section-container footer background_footer"
+        >
           <h2 class="section-footer">Contacto</h2>
           <p class="footer__mail">josejava9@gmal.com</p>
           <div class="footer__social">
@@ -236,7 +249,7 @@
               <img
                 src="./icons/linkedin-brands-solid-full.svg"
                 alt="linkedin"
-                class="icon-svg icon_footer"
+                class="icon_footer"
               />
             </a>
             <a
@@ -246,7 +259,7 @@
               <img
                 src="./icons/facebook.svg"
                 alt="facebook"
-                class="icon-svg icon_footer"
+                class="icon_footer"
               />
             </a>
             <a
@@ -256,7 +269,7 @@
               <img
                 src="./icons/instagram.svg"
                 alt="instagram"
-                class="icon-svg icon_footer"
+                class="icon_footer"
               />
             </a>
             <a
@@ -266,7 +279,7 @@
               <img
                 src="./icons/x-twitter-brands-solid-full.svg"
                 alt="x"
-                class="icon-svg icon_footer"
+                class="icon_footer"
               />
             </a>
           </div>
