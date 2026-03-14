@@ -148,15 +148,15 @@ body {
   color: white;
   font-weight: 500;
   position: relative;
-  padding-bottom: 8px; 
+  padding-bottom: 8px;
   display: inline-block;
   transition: border 0.3s ease;
-  
+
   border: 2px solid transparent;
 }
 
 .profile__subtemas a:hover {
-  border: 2px solid #3477f3; 
+  border: 2px solid #3477f3;
   border-radius: 4px;
 }
 .profile__subtemas a::after {
@@ -165,10 +165,10 @@ body {
   left: 0;
   bottom: -10px;
   width: 100%;
-  height: 5px; 
+  height: 5px;
   background: linear-gradient(90deg, #271153, #7d67ff);
   transition: outline 0.2s ease;
-  outline: 2px solid transparent; 
+  outline: 2px solid transparent;
 }
 
 
@@ -271,13 +271,17 @@ body {
 
 .footer__mail {
   font-size: 18px;
-  margin-bottom: 10px;
-  color: #6d6dff;
+  color: #6d6dff; /* El color morado/azul que ya tenías */
+  text-decoration: none; /* Quita el subrayado automático */
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+  display: inline-block; /* Para que el transform: scale funcione bien */
 }
 .footer__mail:hover {
   transform: scale(1.1);
-
-  text-decoration: underline;
+  color: #ffffff; /* Opcional: que cambie a blanco al pasar el mouse */
+  text-decoration: underline; /* Opcional: que aparezca el subrayado solo al tocarlo */
 }
 
 .footer__social {
@@ -412,18 +416,43 @@ body {
   height: 350px;
   object-fit: cover; /* Evita que la imagen se estire feo */
   object-position: center; /* Asegura que el centro de la imagen sea lo visible */
-  aspect-ratio: 590 / 330; /* Mantiene la proporción de tu Figma */
+  aspect-ratio: 16 / 9; /* Mantiene la proporción de tu Figma */
 }
 
 /* 3. La lista que contiene los iconos de HTML y CSS */
+
+.project_item {
+  position: relative; /* Importante: permite que los hijos se posicionen respecto a él */
+  overflow: hidden; /* Mantiene el degradado dentro de los bordes de la tarjeta */
+}
+.card_overlay {
+  position: absolute; /* Se despega del flujo y flota encima */
+  bottom: 0; /* Se pega a la base */
+  left: 0;
+  width: 100%; /* Cubre todo el ancho */
+  height: 50%; /* Cubre la mitad inferior (ajusta según prefieras) */
+
+  /* Gradiente de transparente (arriba) a negro (abajo) */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(36, 2, 2, 0.8) 100%
+  );
+
+  pointer-events: none; /* Permite que el mouse pase a través de la capa */
+  z-index: 1; /* Se coloca sobre la imagen */
+}
+
+/* Asegúrate de que tus iconos estén por encima del degradado */
 .project_list {
-  position: absolute; /* Flota sobre la imagen */
   bottom: 5px; /* 15px desde el borde inferior de la imagen */
   left: 5px; /* 15px desde el borde izquierdo de la imagen */
   display: flex; /* Los pone en fila (izquierda a derecha) */
   gap: 8px; /* Espacio entre los iconos */
   list-style: none;
-  z-index: 10; /* Asegura que estén al frente */
+
+  z-index: 2;
+  position: relative;
 }
 
 /* 4. Tamaño de los iconos (50x50 como en Figma o más pequeños si prefieres) */
@@ -447,6 +476,58 @@ body {
 
 .section-footer {
   font-size: 40px;
+}
+
+.background_footer {
+  position: relative; /* Necesario para que la capa de luz no se escape */
+  background-color: #000000;
+  /* Mantenemos tus líneas rojas aquí */
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(74, 14, 14, 0.55) 0px,
+    rgba(74, 14, 14, 0.55) 50px,
+    transparent 1px,
+    transparent 65px
+  );
+  overflow: hidden; /* Evita que el resplandor cree barras de scroll */
+}
+
+/* Esta es la capa que crea el efecto de la imagen de la izquierda */
+.background_footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1; /* Se sitúa sobre las líneas rojas */
+
+  /* Gradientes radiales mucho más suaves y oscuros */
+  background-image:
+    radial-gradient(
+      circle at calc(50% - 400px) 40%,
+      rgba(40, 10, 90, 0.35) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at calc(50% + 400px) 60%,
+      rgba(20, 30, 100, 0.25) 0%,
+      transparent 60%
+    ),
+    /* El brillo central de contacto */
+    radial-gradient(
+        circle at center,
+        rgba(125, 103, 255, 0.15) 0%,
+        transparent 50%
+      );
+
+  pointer-events: none; /* No interfiere con los clics en los iconos */
+}
+
+/* Aseguramos que el contenido real esté por encima de la luz */
+.footer {
+  position: relative;
+  z-index: 2;
 }
 
 /* --- 4. Media Queries al final del componente --- */

@@ -1,1 +1,16 @@
+# Archivos de sistema de macOS
 .DS_Store
+
+# Carpetas de dependencias
+node_modules/
+
+# Archivos de configuración local del editor
+.vscode/
+.idea/
+
+# Archivos de registro (logs)
+*.log
+
+# Evitar subir carpetas de diseño o recursos pesados si no son necesarios
+# (Solo si tienes carpetas temporales de Figma)
+temp/

@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+
+# Archivos de sistema y compilación
+.DS_Store
+dist/
+build/
+
+# Archivos que no necesitan formato
+normalize.css
+vendor/
+*.png
+*.jpg
+*.svg
+*.woff
+*.woff2
